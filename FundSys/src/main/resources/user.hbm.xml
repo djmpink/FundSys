@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.no7player.fundsys.po">
+    <class name="User" >
+        <id name="id" >
+            <generator class="identity"/>
+        </id>
+        <property name="nickName"></property>
+        <property name="password"></property>
+        <property name="userName"></property>
+        <property name="age"></property>
+        <property name="gender"></property>
+        <property name="authority"></property>
+        <property name="email"></property>
+        <property name="mobile"></property>
+    </class>
+</hibernate-mapping>
