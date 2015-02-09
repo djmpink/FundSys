@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface UserDao {
     public String addUser(User user);
-    public List findUserByNickName(String nickName);
+    public List findUserByNickName(String nickname);
 }

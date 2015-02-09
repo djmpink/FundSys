@@ -3,7 +3,7 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-    <package name="default" namespace="/" extends="struts-default">
+    <package name="default" namespace="/" extends="json-default">
         <global-results>
             <result name="error">/error.jsp</result>
         </global-results>
@@ -12,9 +12,15 @@
         </global-exception-mappings>
         <action name="login" class="cn.no7player.fundsys.action.UserLoginAction">
             <!-- 定义三个逻辑视图和物理资源之间的映射 -->
-            <result name="input">/login.jsp</result>
-            <result name="error">/error.jsp</result>
-            <result name="success">/welcome.jsp</result>
+            <result type="json">
+
+                <!-- root的值对应要返回的值的属性 -->
+                <!-- 这里的result值即是 对应action中的 result -->
+                <param name="root">result</param>
+            </result>
+            <!--<result name="input">/login.jsp</result>-->
+            <!--<result name="error">/error.jsp</result>-->
+            <!--<result name="success">/welcome.jsp</result>-->
         </action>
     </package>
 </struts>

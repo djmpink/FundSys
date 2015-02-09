@@ -60,4 +60,12 @@
                      <ref bean="userDAO"/>
               </property>
        </bean>
+
+       <!--<bean id="userLoginAction" class="cn.no7player.fundsys.action.UserLoginAction">-->
+              <!--<property name="user">-->
+                     <!--<ref bean="user"/>-->
+              <!--</property>-->
+       <!--</bean>-->
+       <!--<bean id="user" class="cn.no7player.fundsys.po.User">-->
+       <!--</bean>-->
 </beans>

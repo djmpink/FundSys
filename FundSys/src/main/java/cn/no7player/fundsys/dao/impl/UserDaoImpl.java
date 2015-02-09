@@ -14,7 +14,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
     @Override
     public String addUser(User user) {
         String success = "";
-        String nickName = user.getNickName();
+        String nickName = user.getNickname();
         if(findUserByNickName(nickName).size() == 0){
             try {
                 getHibernateTemplate().save(user);

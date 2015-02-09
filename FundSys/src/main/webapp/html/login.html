@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<link rel="stylesheet" type="text/css" href="../css/style.css">-->
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.3/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //使用 Ajax 的方式 判断登录
+            $("#btn_login").click(function () {
+
+                var url = 'login.action';
+
+                //获取表单值，并以json的数据形式保存到params中
+                var params = {
+//                    user: {
+                        nickname: $("#nickname").val(),
+                        password: $("#password").val()
+                    //}
+                };
+                //使用$.post方式
+                $.post(
+                        url,        //服务器要接受的url
+                        params,     //传递的参数
+                        function (json) { //服务器返回后执行的函数 参数 data保存的就是服务器发送到客户端的数据
+                            var member = eval("(" + json + ")");    //包数据解析为json 格式
+                            switch (member.name) {
+                                case "error1" :
+                                    $('#span1').html("用户" + params.nickname + "不存在！");
+                                    break;
+                                case "error2" :
+                                    $('#span1').html("用户" + params.nickname + "已注销！");
+                                    break;
+                                case "error3" :
+                                    $('#span1').html("用户" + params.nickname + "的密码不正确！");
+                                    break;
+                                case "clerk" :
+                                    location.href = "<%=path%>/clerkIndex.jsp";
+                                case "manager" :
+                                    location.href = "<%=path%>/managerIndex.jsp";
+                                case "admin" :
+                                    location.href = "../welcome.jsp";
+
+                            }
+
+                        },
+
+                        'json'  //数据传递的类型  json
+
+                );
+
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+
+<form id="login">
+    <h1>登陆</h1>
+    <fieldset id="inputs">
+        <input id="nickname" type="text" name="user.nickname" placeholder="昵称" autofocus required>
+        <input id="password" type="password" name="user.password" placeholder="密码" required>
+    </fieldset>
+    <fieldset id="actions">
+        <!--<input type="submit" id="submit" value="登录">-->
+        <input type="button" name="sub" value="登 录" class="button" id="btn_login" />
+        <a href="">忘记密码?</a>
+        <a href="">注册</a>
+    </fieldset>
+</form>
+
+</body>
+</html>

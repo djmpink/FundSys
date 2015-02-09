@@ -7,7 +7,7 @@
         <id name="id" >
             <generator class="identity"/>
         </id>
-        <property name="nickName"></property>
+        <property name="nickname"></property>
         <property name="password"></property>
         <property name="userName"></property>
         <property name="age"></property>
