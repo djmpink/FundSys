@@ -17,42 +17,44 @@ import java.util.Map;
 /**
  * Created by zl on 2/9/2015.
  */
-public class UserLoginAction extends ActionSupport {
+public class RegisterAction extends ActionSupport {
     private UserService userService;
     //private User user;
+    private String email;
     private String nickname;
     private String password;
+    private String repassword;
+    private String mobile;
     // 用户Ajax返回数据
     private String result;
     private User user;
 
 
+    private static final Logger logger = LoggerFactory.getLogger(RegisterAction.class);
 
-    private static final Logger logger = LoggerFactory.getLogger(UserLoginAction.class);
-
-    public UserLoginAction(){
+    public RegisterAction(){
         ApplicationContext context= InitApplicationContext.getApplicationContext();
         userService= (UserService) context.getBean("userService");
     }
     @Override
     public String execute() throws Exception {
-        user=new User();
-        user.setNickname(nickname);
-        user.setPassword(password);
-        System.out.println("========================================");
-        logger.info("User",user.getNickname());
-        if (!isValid(user.getNickname())) {
-            return INPUT;
-        }
-        if (!isValid(user.getPassword())) {
-            return INPUT;
-        }
-        if(!userCheck(user)){
-            System.out.println("INPUT");
-            return INPUT;
-        }
+//        user=new User();
+//        user.setNickname(nickname);
+//        user.setPassword(password);
+//        System.out.println("========================================");
+//        logger.info("User",user.getNickname());
+//        if (!isValid(user.getNickname())) {
+//            return INPUT;
+//        }
+//        if (!isValid(user.getPassword())) {
+//            return INPUT;
+//        }
+//        if(!userCheck(user)){
+//            System.out.println("INPUT");
+//            return INPUT;
+//        }
         logger.info("SUCCESS");
-        ActionContext.getContext().getSession().put("user" , user);
+       // ActionContext.getContext().getSession().put("user" , user);
 
         // 用一个Map做例子
         Map<String, String> map = new HashMap<String, String>();
@@ -71,22 +73,22 @@ public class UserLoginAction extends ActionSupport {
 
         return SUCCESS;
     }
-    public boolean isValid(String keyword) {
-        return keyword != null && keyword != "";
-    }
-    public boolean userCheck(User user) {
-        List<User> userList = userService.findUserByNickName(user.getNickname());
-        if (userList == null || userList.size() < 1) {
-            return false;
-        }
-        User checkUser = userList.get(0);
-        System.out.println(checkUser.getNickname());
-        if (user.getNickname().equals(checkUser.getNickname()) && user.getPassword().equals(checkUser.getPassword())) {
-            return true;
-        }
-        addActionError("Username or password is wrong, please check!");
-        return false;
-    }
+//    public boolean isValid(String keyword) {
+//        return keyword != null && keyword != "";
+//    }
+//    public boolean userCheck(User user) {
+//        List<User> userList = userService.findUserByNickName(user.getNickname());
+//        if (userList == null || userList.size() < 1) {
+//            return false;
+//        }
+//        User checkUser = userList.get(0);
+//        System.out.println(checkUser.getNickname());
+//        if (user.getNickname().equals(checkUser.getNickname()) && user.getPassword().equals(checkUser.getPassword())) {
+//            return true;
+//        }
+//        addActionError("Username or password is wrong, please check!");
+//        return false;
+//    }
     public UserService getUserService() {
         return userService;
     }
@@ -121,5 +123,29 @@ public class UserLoginAction extends ActionSupport {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRepassword() {
+        return repassword;
+    }
+
+    public void setRepassword(String repassword) {
+        this.repassword = repassword;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }

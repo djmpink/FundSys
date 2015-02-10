@@ -14,14 +14,14 @@
         <title>Login</title>
     </head>
     <body>
-        <h2>SS2H Demo</h2>
-        <s:form action="login" validate="true">
-            <s:textfield label="User Name" name="user.nickname" required="true"/>
-            <s:password label="Password" name="user.password" required="true"/>
-            <s:iterator value="errors">
-                <s:property/>
-            </s:iterator>
-            <s:submit value="login"/>
-        </s:form>
+        <%--<h2>SS2H Demo</h2>--%>
+        <%--<s:form action="login" validate="true">--%>
+            <%--<s:textfield label="User Name" name="user.nickname" required="true"/>--%>
+            <%--<s:password label="Password" name="user.password" required="true"/>--%>
+            <%--<s:iterator value="errors">--%>
+                <%--<s:property/>--%>
+            <%--</s:iterator>--%>
+            <%--<s:submit value="login"/>--%>
+        <%--</s:form>--%>
     </body>
 </html>
