@@ -31,6 +31,14 @@
                 <param name="root">result</param>
             </result>
         </action>
+        <action name="fundTrade" class="cn.no7player.fundsys.action.FundTradeAction">
+            <!-- 定义三个逻辑视图和物理资源之间的映射 -->
+            <result type="json">
+                <!-- root的值对应要返回的值的属性 -->
+                <!-- 这里的result值即是 对应action中的 result -->
+                <param name="root">result</param>
+            </result>
+        </action>
 
     </package>
 </struts>

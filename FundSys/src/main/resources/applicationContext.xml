@@ -61,6 +61,10 @@
               </property>
        </bean>
 
+       <bean id="fundTradeService" class="cn.no7player.fundsys.service.impl.FundTradeServiceImpl">
+
+       </bean>
+
        <!--<bean id="userLoginAction" class="cn.no7player.fundsys.action.UserLoginAction">-->
               <!--<property name="user">-->
                      <!--<ref bean="user"/>-->
