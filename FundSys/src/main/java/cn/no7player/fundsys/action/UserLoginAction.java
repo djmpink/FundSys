@@ -47,12 +47,13 @@ public class UserLoginAction extends ActionSupport {
         if (!isValid(user.getPassword())) {
             return INPUT;
         }
-        if(!userCheck(user)){
-            System.out.println("INPUT");
+        int userId=userCheck(user);
+        if(userId<=0){
+            logger.info("INPUT");
             return INPUT;
         }
         logger.info("SUCCESS");
-        ActionContext.getContext().getSession().put("user" , user);
+        ActionContext.getContext().getSession().put("userId" , userId);
 
         // 用一个Map做例子
         Map<String, String> map = new HashMap<String, String>();
@@ -74,18 +75,18 @@ public class UserLoginAction extends ActionSupport {
     public boolean isValid(String keyword) {
         return keyword != null && keyword != "";
     }
-    public boolean userCheck(User user) {
+    public int userCheck(User user) {
         List<User> userList = userService.findUserByNickName(user.getNickname());
         if (userList == null || userList.size() < 1) {
-            return false;
+            return -1;
         }
         User checkUser = userList.get(0);
         System.out.println(checkUser.getNickname());
         if (user.getNickname().equals(checkUser.getNickname()) && user.getPassword().equals(checkUser.getPassword())) {
-            return true;
+            return checkUser.getId();
         }
         addActionError("Username or password is wrong, please check!");
-        return false;
+        return -1;
     }
     public UserService getUserService() {
         return userService;

@@ -18,8 +18,12 @@
                      <ref bean="dataSource"/>
               </property>
               <property name="mappingLocations">
-                     <value>user.hbm.xml</value>
+                     <list>
+                            <value>user.hbm.xml</value>
+                            <value>fundTradeData.hbm.xml</value>
+                     </list>
               </property>
+
               <property name="hibernateProperties">
                      <props>
                             <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -61,8 +65,16 @@
               </property>
        </bean>
 
-       <bean id="fundTradeService" class="cn.no7player.fundsys.service.impl.FundTradeServiceImpl">
 
+       <bean id="fundTradeDataDao" class="cn.no7player.fundsys.dao.impl.FundTradeDataDaoImpl">
+              <property name="hibernateTemplate">
+                     <ref bean="hibernateTemplate"/>
+              </property>
+       </bean>
+       <bean id="fundTradeService" class="cn.no7player.fundsys.service.impl.FundTradeServiceImpl">
+              <property name="fundTradeDataDao">
+                     <ref bean="fundTradeDataDao"/>
+              </property>
        </bean>
 
        <!--<bean id="userLoginAction" class="cn.no7player.fundsys.action.UserLoginAction">-->
