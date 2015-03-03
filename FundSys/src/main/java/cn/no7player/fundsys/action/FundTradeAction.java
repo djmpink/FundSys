@@ -16,20 +16,42 @@ import java.util.List;
 /**
  * Created by zl on 2/28/2015.
  */
-public class FundTradeAction extends ActionSupport {
+public class FundTradeAction extends BaseAction {
 
     private FundTradeService fundTradeService;
-    private Object result;
-    private static final Logger logger = LoggerFactory.getLogger(FundTradeAction.class);
+
     public FundTradeAction(){
         ApplicationContext context= InitApplicationContext.getApplicationContext();
         fundTradeService= (FundTradeService) context.getBean("fundTradeService");
     }
-    @Override
-    public String execute() throws Exception {
 
-        System.out.println("========================================");
+    public String purchaseFund(){
         //验证登陆信息
+        Integer userId=(Integer)ActionContext.getContext().getSession().get("userId");
+        if(userId==null||userId<0){
+            return INPUT;
+        }
+
+        //验证成功，已登陆
+        logger.info("验证成功，已登陆");
+        int flag=fundTradeService.addFundTrade(getData(),userId);
+
+        logger.info("fundTradeDates");
+        if(flag!=0){
+            return INPUT;
+        }
+
+        // 调用json对象的toString方法转换为字符串然后赋值给result
+
+        JSONObject jsonObject =new JSONObject();
+        jsonObject.put("ACK",1);
+        setResult(jsonObject);
+
+        return returnResult(SUCCESS);
+    }
+
+    public String getFundTradeData(){
+//验证登陆信息
         Integer userId=(Integer)ActionContext.getContext().getSession().get("userId");
         if(userId==null||userId<0){
             return INPUT;
@@ -45,13 +67,12 @@ public class FundTradeAction extends ActionSupport {
 
         JSONObject jsonObject =new JSONObject();
         jsonObject.put("data",jsonArray);
-        this.result =jsonObject;
 
-        // 可以测试一下result
-        logger.info(this.result.toString());
-        logger.info("SUCCESS");
-        return SUCCESS;
+        setResult(jsonObject);
+
+        return returnResult(SUCCESS);
     }
+
 
     public FundTradeService getFundTradeService() {
         return fundTradeService;
@@ -61,11 +82,4 @@ public class FundTradeAction extends ActionSupport {
         this.fundTradeService = fundTradeService;
     }
 
-    public Object getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
 }

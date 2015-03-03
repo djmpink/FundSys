@@ -1,5 +1,7 @@
 package cn.no7player.fundsys.service;
 
+import cn.no7player.fundsys.po.FundTradeData;
+
 import java.util.List;
 
 /**
@@ -7,4 +9,7 @@ import java.util.List;
  */
 public interface FundTradeService {
     public List getFundTradeDateByUserId(int userId);
+    public int addFundTrade(String receiveData,int userId);
+
+
 }

@@ -7,20 +7,13 @@
         <id name="id" >
             <generator class="identity"/>
         </id>
-        <property name="fundCode"></property>
-        <property name="fundName"></property>
-        <property name="purchaseCredit"></property>
-        <property name="purchaseShare"></property>
-        <property name="purchaseNetWorth"></property>
-        <property name="miniNetWorth"></property>
+        <property name="code"></property>
+        <property name="name"></property>
+        <property name="purchase"></property>
+        <property name="share"></property>
         <property name="purchaseFee"></property>
         <property name="purchaseDate"></property>
-        <property name="saleShare"></property>
-        <property name="saleNetWorth"></property>
-        <property name="earnings"></property>
-        <property name="profit"></property>
-        <property name="saleFee"></property>
-        <property name="saleDate"></property>
+        <property name="saleRate"></property>
         <property name="userId"></property>
     </class>
 </hibernate-mapping>
