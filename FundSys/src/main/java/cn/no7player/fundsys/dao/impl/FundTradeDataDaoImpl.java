@@ -31,7 +31,7 @@ public class FundTradeDataDaoImpl extends HibernateDaoSupport implements FundTra
 
     @Override
     public List getFundTradeDateByCode(String code,int userId) {
-        System.out.println("FundTradeDataDaoImpl : getFundTradeDateByCode");
+        //System.out.println("FundTradeDataDaoImpl : getFundTradeDateByCode");
         return getHibernateTemplate().find("from FundTradeData where code = ? and userId=? ", code,userId);
     }
 

@@ -13,6 +13,17 @@
               <property name="username" value="root"/>
               <property name="password" value="123456" />
        </bean>
+       <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+              <!--<property name="driverClassName">-->
+              <!--<value>com.mysql.jdbc.Driver</value>-->
+              <!--</property>-->
+              <!--<property name="url">-->
+              <!--<value>jdbc:mysql://sqld.duapp.com:4050/ymNJdsOexEQZyDjtqekG</value>-->
+              <!--</property>-->
+              <!--<property name="username" value="bezhQjEPjNXiVneneN3tAFcT"/>-->
+              <!--<property name="password" value="PHz8g8R54PzrWpTe02ghNuQAtDSZmtiv" />-->
+       <!--</bean>-->
+
        <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
               <property name="dataSource">
                      <ref bean="dataSource"/>

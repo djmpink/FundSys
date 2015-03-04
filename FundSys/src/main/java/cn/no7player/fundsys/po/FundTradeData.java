@@ -14,6 +14,7 @@ public class FundTradeData {
     private double saleRate;
     private String purchaseDate;
     private int userId;
+    private double purchaseNetWorth;
 
     public int getId() {
         return id;
@@ -85,5 +86,13 @@ public class FundTradeData {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public double getPurchaseNetWorth() {
+        return purchaseNetWorth;
+    }
+
+    public void setPurchaseNetWorth(double purchaseNetWorth) {
+        this.purchaseNetWorth = purchaseNetWorth;
     }
 }

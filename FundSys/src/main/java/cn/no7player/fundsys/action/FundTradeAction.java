@@ -1,6 +1,7 @@
 package cn.no7player.fundsys.action;
 
 import cn.no7player.fundsys.po.FundTradeData;
+import cn.no7player.fundsys.response.GetFundTradeData;
 import cn.no7player.fundsys.service.FundTradeService;
 import cn.no7player.fundsys.util.InitApplicationContext;
 import com.opensymphony.xwork2.ActionContext;
@@ -25,6 +26,10 @@ public class FundTradeAction extends BaseAction {
         fundTradeService= (FundTradeService) context.getBean("fundTradeService");
     }
 
+    /**
+     * 购买操作
+     * @return
+     */
     public String purchaseFund(){
         //验证登陆信息
         Integer userId=(Integer)ActionContext.getContext().getSession().get("userId");
@@ -51,7 +56,7 @@ public class FundTradeAction extends BaseAction {
     }
 
     public String getFundTradeData(){
-//验证登陆信息
+        //验证登陆信息
         Integer userId=(Integer)ActionContext.getContext().getSession().get("userId");
         if(userId==null||userId<0){
             return INPUT;
@@ -59,9 +64,10 @@ public class FundTradeAction extends BaseAction {
         logger.info("验证成功，已登陆");
         //验证成功，已登陆
         logger.info("userId: "+userId);
-        List<FundTradeData> fundTradeDates=fundTradeService.getFundTradeDateByUserId(userId);
+        List<GetFundTradeData> getFundTradeDatas=fundTradeService.getFundTradeDateByUserId(userId);
         logger.info("fundTradeDates");
-        JSONArray jsonArray = JSONArray.fromObject(fundTradeDates);
+
+        JSONArray jsonArray = JSONArray.fromObject(getFundTradeDatas);
 
         // 调用json对象的toString方法转换为字符串然后赋值给result
 

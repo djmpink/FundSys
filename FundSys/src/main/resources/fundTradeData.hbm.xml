@@ -15,5 +15,6 @@
         <property name="purchaseDate"></property>
         <property name="saleRate"></property>
         <property name="userId"></property>
+        <property name="purchaseNetWorth"></property>
     </class>
 </hibernate-mapping>

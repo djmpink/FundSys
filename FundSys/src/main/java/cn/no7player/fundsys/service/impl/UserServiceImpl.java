@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by zl on 2/9/2015.
  */
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl implements UserService {
     private UserDao userDao;
     private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     public UserDao getUserDao() {

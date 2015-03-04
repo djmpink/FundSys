@@ -17,9 +17,12 @@ $(document).ready(function() {
             { "data": "name" },
             { "data": "purchase" },
             { "data": "share" },
+            { "data": "purchaseNetWorth" },
             { "data": "purchaseFee" },
             { "data": "purchaseDate" },
             { "data": "saleRate" },
+            { "data": "avgPurchaseNetWorth" },
+            { "data": "minNetWorth" }
         ]
     } );
 } );
@@ -30,6 +33,7 @@ $(document).ready(function() {
 $("#btn_confirm_purchase").click(function () {
     var url = 'purchaseFund.action';
     //获取表单值，并以json的数据形式保存到params中
+
     var params = {
 
         fundCode: $("#code").val(),
@@ -37,15 +41,11 @@ $("#btn_confirm_purchase").click(function () {
         purchaseCredit: $("#purchaseCredit").val(),
         purchaseShare: $("#purchaseShare").val(),
         purchaseNetWorth: $("#purchaseNetWorth").val(),
-        purchaseRate: $("#purchaseRate").val(),
-        purchaseDate: $("#purchaseDate").val()
+        purchaseDate: $("#purchaseDate").val(),
+        saleRate:$("#saleRate").val()
 
     };
     var t = JSON.stringify(params);
-
-    //var params = $('form[role="form"]').serialize();
-
-
     //使用$.post方式
     $.post(
         url,        //服务器要接受的url
