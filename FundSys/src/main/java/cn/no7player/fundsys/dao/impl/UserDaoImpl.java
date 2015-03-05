@@ -12,20 +12,20 @@ import java.util.List;
  */
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
     @Override
-    public String addUser(User user) {
-        String success = "";
+    public int addUser(User user) {
+        int flag = -1;
         String nickName = user.getNickname();
         if(findUserByNickName(nickName).size() == 0){
             try {
                 getHibernateTemplate().save(user);
-                success = "User saved ok!";
+                flag = 0;
             } catch (DataAccessException e) {
-                success = "Sorry, user can't be added.";
+                flag = -1;
             }
         } else {
-            success = "The username has been existed!";
+            flag = 1;
         }
-        return success;
+        return flag;
     }
 
     @Override

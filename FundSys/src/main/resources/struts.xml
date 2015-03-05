@@ -11,20 +11,15 @@
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
-        <action name="login" class="cn.no7player.fundsys.action.UserLoginAction">
+        <action name="login" class="cn.no7player.fundsys.action.UserLoginAction" method="login">
             <!-- 定义三个逻辑视图和物理资源之间的映射 -->
             <result type="json">
-
-                <!-- root的值对应要返回的值的属性 -->
-                <!-- 这里的result值即是 对应action中的 result -->
                 <param name="root">result</param>
             </result>
             <!--<result name="input">/login.jsp</result>-->
-            <!--<result name="error">/error.jsp</result>-->
-            <!--<result name="success">/welcome.jsp</result>-->
         </action>
 
-        <action name="register" class="cn.no7player.fundsys.action.RegisterAction">
+        <action name="register" class="cn.no7player.fundsys.action.RegisterAction" method="register">
             <!-- 定义三个逻辑视图和物理资源之间的映射 -->
             <result type="json">
                 <!-- root的值对应要返回的值的属性 -->

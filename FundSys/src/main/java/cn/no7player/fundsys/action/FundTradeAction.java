@@ -3,6 +3,7 @@ package cn.no7player.fundsys.action;
 import cn.no7player.fundsys.po.FundTradeData;
 import cn.no7player.fundsys.response.GetFundTradeData;
 import cn.no7player.fundsys.service.FundTradeService;
+import cn.no7player.fundsys.util.ACKUtil;
 import cn.no7player.fundsys.util.InitApplicationContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -49,7 +50,7 @@ public class FundTradeAction extends BaseAction {
         // 调用json对象的toString方法转换为字符串然后赋值给result
 
         JSONObject jsonObject =new JSONObject();
-        jsonObject.put("ACK",1);
+        jsonObject.put("ACK", ACKUtil.SUCCESS);
         setResult(jsonObject);
 
         return returnResult(SUCCESS);

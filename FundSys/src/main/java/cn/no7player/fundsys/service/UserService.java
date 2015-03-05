@@ -8,6 +8,7 @@ import java.util.List;
  * Created by zl on 2/9/2015.
  */
 public interface UserService {
-    public String addUser(User user);
-    public List<User> findUserByNickName(String name);
+    public String register(String receiveData);
+    public String checkLogin(String receiveData);
+//    public List<User> findUserByNickName(String name);
 }

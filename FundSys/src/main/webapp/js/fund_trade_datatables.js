@@ -45,11 +45,11 @@ $("#btn_confirm_purchase").click(function () {
         saleRate:$("#saleRate").val()
 
     };
-    var t = JSON.stringify(params);
+    var jsData = JSON.stringify(params);
     //使用$.post方式
     $.post(
         url,        //服务器要接受的url
-        {"data":t},     //传递的参数
+        {"data":jsData},     //传递的参数
         function (json) { //服务器返回后执行的函数 参数 data保存的就是服务器发送到客户端的数据
             if(!(typeof json == 'object')){
                 alert(0);

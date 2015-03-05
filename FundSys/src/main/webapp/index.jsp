@@ -11,10 +11,10 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>Login</title>
+        <title>Hello Fund</title>
     </head>
     <body>
-        <%--<h2>SS2H Demo</h2>--%>
+        <h2>Hello Fund</h2>
         <%--<s:form action="login" validate="true">--%>
             <%--<s:textfield label="User Name" name="user.nickname" required="true"/>--%>
             <%--<s:password label="Password" name="user.password" required="true"/>--%>
