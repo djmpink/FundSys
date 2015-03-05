@@ -23,11 +23,12 @@ $(document).ready(function () {
                 switch (json.ACK) {
                     case 1:
                         $('#login_info').html("登陆成功...！");
-                        location.href = "fund_trade_datatables.html";
+                        location.href = "../fund_trade.html";
                         break;
                     case -1:
                         $('#login_info').html(json.INFO);
                         document.getElementById("login_info").style.color="red";
+
                         break;
                 }
             },
