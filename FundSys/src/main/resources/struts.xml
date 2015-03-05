@@ -6,7 +6,7 @@
     <constant name="struts.devMode" value="false" />
     <package name="default" namespace="/" extends="json-default">
         <global-results>
-            <result name="error">/error.jsp</result>
+            <result name="error">/404.html</result>
         </global-results>
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="error"/>
@@ -29,6 +29,7 @@
         </action>
         <action name="getFundTradeData" class="cn.no7player.fundsys.action.FundTradeAction" method="getFundTradeData">
             <!-- 定义三个逻辑视图和物理资源之间的映射 -->
+            <result name="login">/login.html</result>
             <result type="json">
                 <!-- root的值对应要返回的值的属性 -->
                 <!-- 这里的result值即是 对应action中的 result -->
@@ -42,6 +43,16 @@
                 <!-- 这里的result值即是 对应action中的 result -->
                 <param name="root">result</param>
             </result>
+        </action>
+
+        <action name="checkLogin" class="cn.no7player.fundsys.action.UserLoginAction" method="checkLogin">
+            <result type="json">
+                <!-- root的值对应要返回的值的属性 -->
+                <!-- 这里的result值即是 对应action中的 result -->
+                <param name="root">result</param>
+            </result>
+            <!--<result name="login" type="redirectAction">login.html</result>-->
+            <!--<result name="success" type="redirectAction">fund_trade.html</result>-->
         </action>
 
     </package>

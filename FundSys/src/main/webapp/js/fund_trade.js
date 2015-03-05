@@ -1,7 +1,42 @@
 /**
  * Created by zl on 3/2/2015.
  */
+//TODO
+var check_login=0;
+window.onload = checkLogin();
+function checkLogin() {
+
+    var url = 'checkLogin.action';
+    //使用$.post方式
+    $.post(
+        url,        //服务器要接受的url
+        function (json) { //服务器返回后执行的函数 参数 data保存的就是服务器发送到客户端的数据
+            if(!(typeof json == 'object')){
+                alert(0);
+            }
+            switch (json.ACK) {
+                case 1 :
+                    check_login=1;
+                    break;
+                case -1 :
+                    alert("尚未登录，去登录");
+                    location.href = "../login.html";
+                    //$('#span1').html("用户" + params.nickname + "已注销！");
+                    break;
+            }
+
+
+        },
+        'json'  //数据传递的类型  json
+    );
+
+}
+
+
 $(document).ready(function() {
+    //if(check_login==0){
+    //    return
+    //}
 
     $('#table_fund_trade').dataTable( {
         "ajax": {

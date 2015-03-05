@@ -60,7 +60,7 @@ public class FundTradeAction extends BaseAction {
         //验证登陆信息
         Integer userId=(Integer)ActionContext.getContext().getSession().get("userId");
         if(userId==null||userId<0){
-            return INPUT;
+            return returnResult(LOGIN);
         }
         logger.info("验证成功，已登陆");
         //验证成功，已登陆
