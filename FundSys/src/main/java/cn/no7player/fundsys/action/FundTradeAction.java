@@ -1,16 +1,13 @@
 package cn.no7player.fundsys.action;
 
-import cn.no7player.fundsys.po.FundTradeData;
+
 import cn.no7player.fundsys.response.GetFundTradeData;
 import cn.no7player.fundsys.service.FundTradeService;
 import cn.no7player.fundsys.util.ACKUtil;
 import cn.no7player.fundsys.util.InitApplicationContext;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 
 import java.util.List;
@@ -25,6 +22,21 @@ public class FundTradeAction extends BaseAction {
     public FundTradeAction(){
         ApplicationContext context= InitApplicationContext.getApplicationContext();
         fundTradeService= (FundTradeService) context.getBean("fundTradeService");
+    }
+
+
+    public String saleFund(){
+        //验证登陆信息
+        Integer userId=(Integer)ActionContext.getContext().getSession().get("userId");
+        if(userId==null||userId<0){
+            return INPUT;
+        }
+        fundTradeService.saleFundTrade(getData(),userId);
+
+
+        //验证成功，已登陆
+        logger.info("验证成功，已登陆");
+        return returnResult(SUCCESS);
     }
 
     /**
@@ -70,7 +82,7 @@ public class FundTradeAction extends BaseAction {
 
         JSONArray jsonArray = JSONArray.fromObject(getFundTradeDatas);
 
-        // 调用json对象的toString方法转换为字符串然后赋值给result
+        //调用json对象的toString方法转换为字符串然后赋值给result
 
         JSONObject jsonObject =new JSONObject();
         jsonObject.put("data",jsonArray);

@@ -10,6 +10,6 @@ import java.util.List;
 public interface FundTradeService {
     public List getFundTradeDateByUserId(int userId);
     public int addFundTrade(String receiveData,int userId);
-
+    public int saleFundTrade(String receiveData,int userId);
 
 }

@@ -106,4 +106,15 @@ public class FundTradeServiceImpl extends BaseServiceImpl implements FundTradeSe
         }
     }
 
+    @Override
+    public int saleFundTrade(String receiveData, int userId) {
+        System.out.println("FundTradeServiceImpl : saleFundTrade");
+        //解析收到的数据
+        JSONObject data=JSONObject.fromObject(receiveData);
+
+        String code=data.getString("saleCode");
+        //获取数据库基金数据
+        return 0;
+    }
+
 }

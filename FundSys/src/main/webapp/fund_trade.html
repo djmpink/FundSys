@@ -248,11 +248,11 @@
                         </div>
                         <!--功能按钮 编辑购入信息-->
                         <div class="ibox-content">
+                            <!--购买-->
                             <div class="text-center">
-                                <a data-toggle="modal" class="btn btn-primary" href="#modal-form">购买</a>
+                                <a data-toggle="modal" class="btn btn-primary" href="#modal-form-buy">购买</a>
                             </div>
-
-                            <div id="modal-form" class="modal fade" aria-hidden="true">
+                            <div id="modal-form-buy" class="modal fade" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-body">
@@ -303,6 +303,49 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--卖出-->
+                            <div id="modal-form-sale" class="modal fade" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <h3 class="m-t-none m-b">卖出操作</h3>
+                                                <form role="form" >
+                                                    <div class="form-group">
+                                                        <label>代码*</label>
+                                                        <input id="saleCode" type="text" placeholder="代码" class="form-control" disabled>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>名称</label>
+                                                        <input id="saleName" type="text" placeholder="名称" class="form-control" disabled>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>卖出份数（份）*</label>
+                                                        <input id="saleShare" type="text" placeholder="卖出份数" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>卖出份数（份）*</label>
+                                                        <input id="saleNetWorth" type="text" placeholder="卖出净值" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>卖出日期</label>
+                                                        <input id="saleDate" type="text" placeholder="卖出日期" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>卖出手续费率（%）</label>
+                                                        <input id="realSaleRate" type="text" placeholder="卖出手续费率（%）" class="form-control">
+                                                    </div>
+
+                                                    <div>
+                                                        <input id="btn_confirm_sale" type="button" name="confirm" class="btn btn-sm btn-primary pull-right m-t-n-xs" value="确认卖出">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <!--表格正文-->
                         <div class="ibox-content">
@@ -320,6 +363,7 @@
                                     <th>平均净值</th>
                                     <th>期望最低净值</th>
 
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
@@ -334,6 +378,7 @@
                                     <th>卖出手续费率</th>
                                     <th>平均净值</th>
                                     <th>期望最低净值</th>
+                                    <th>操作</th>
                                 </tr>
                                 </tfoot>
                             </table>
