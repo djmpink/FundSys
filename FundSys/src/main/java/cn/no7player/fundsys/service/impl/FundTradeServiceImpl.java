@@ -114,7 +114,23 @@ public class FundTradeServiceImpl extends BaseServiceImpl implements FundTradeSe
 
         String code=data.getString("saleCode");
         //获取数据库基金数据
-        return 0;
+        List<FundTradeData> fundTradeDatas=  fundTradeDataDao.getFundTradeDateByCode(code,userId);
+        if(fundTradeDatas==null||fundTradeDatas.isEmpty()){
+            return -1;
+        }else {
+            FundTradeData fundTradeData=fundTradeDatas.get(0);
+            fundTradeData.setShare(fundTradeData.getShare()-data.getDouble("saleShare"));
+            fundTradeData.setPurchase(fundTradeData.getPurchase() - data.getDouble("saleShare") * data.getDouble("saleNetWorth"));
+            fundTradeData.setSaleRate(data.getDouble("saleNetWorth"));
+            logger.info("Share:"+fundTradeData.getShare());
+            logger.info("Purchase:" + fundTradeData.getPurchase());
+            logger.info("SaleRate:" + fundTradeData.getSaleRate());
+
+            fundTradeData.setUserId(userId);
+            return fundTradeDataDao.updateFundTrade(fundTradeData);
+        }
+
+        //return 0;
     }
 
 }

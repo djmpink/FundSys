@@ -31,11 +31,21 @@ public class FundTradeAction extends BaseAction {
         if(userId==null||userId<0){
             return INPUT;
         }
-        fundTradeService.saleFundTrade(getData(),userId);
-
-
-        //验证成功，已登陆
         logger.info("验证成功，已登陆");
+        int flag=fundTradeService.saleFundTrade(getData(),userId);
+
+        logger.info("saleFund");
+        if(flag!=0){
+            return INPUT;
+        }
+
+        // 调用json对象的toString方法转换为字符串然后赋值给result
+
+        JSONObject jsonObject =new JSONObject();
+        jsonObject.put("ACK", ACKUtil.SUCCESS);
+        setResult(jsonObject);
+        //验证成功，已登陆
+
         return returnResult(SUCCESS);
     }
 

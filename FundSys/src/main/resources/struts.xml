@@ -44,7 +44,13 @@
                 <param name="root">result</param>
             </result>
         </action>
-
+        <action name="saleFund" class="cn.no7player.fundsys.action.FundTradeAction" method="saleFund">
+            <result type="json">
+                <!-- root的值对应要返回的值的属性 -->
+                <!-- 这里的result值即是 对应action中的 result -->
+                <param name="root">result</param>
+            </result>
+        </action>
         <action name="checkLogin" class="cn.no7player.fundsys.action.UserLoginAction" method="checkLogin">
             <result type="json">
                 <!-- root的值对应要返回的值的属性 -->
